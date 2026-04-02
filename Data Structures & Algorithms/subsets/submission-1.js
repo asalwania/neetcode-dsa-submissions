@@ -1,0 +1,29 @@
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @return {number[][]}
+     */
+    subsets(nums) {
+        const res =[];
+
+        const subset=[]
+
+        function dfs(i){
+            // base case
+            if(i>= nums.length){
+                res.push([...subset]);
+                return;
+            }
+
+            subset.push(nums[i]);
+            dfs(i+1);
+
+            subset.pop();
+            dfs(i+1);
+        }
+
+        dfs(0);
+
+        return res;
+    }
+}
